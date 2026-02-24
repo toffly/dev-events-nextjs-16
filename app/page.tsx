@@ -8,7 +8,7 @@ const events = [
     slug: "event-1",
     location: "location-1",
     date: "Date-1",
-    tim: "Time-1",
+    time: "Time-1",
   },
    {
     image: "/images/event2.png",
@@ -16,7 +16,7 @@ const events = [
     slug: "event-2",
     location: "location-2",
     date: "Date-2",
-    tim: "Time-2",
+    time: "Time-2",
   },
 ];
 
