@@ -1,3 +1,4 @@
+import BookEvent from "@/components/BookEvent";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -64,6 +65,8 @@ const EventDetailsPage = async ({
 
   if (!description) return notFound();
 
+  const booking = 10;
+
   return (
     <section id="event">
       <div className="header">
@@ -109,11 +112,22 @@ const EventDetailsPage = async ({
             <p>{organizer}</p>
           </section>
 
-          <EventTags tags={JSON.parse(tags[0])}/>
+          <EventTags tags={JSON.parse(tags[0])} />
         </div>
 
         <aside className="booking">
-          <p className="text-lg font-semibold">Book Event</p>
+          <div className="signup-card">
+            <h2>Book Your Spot</h2>
+            {booking > 0 ? (
+              <p className="text-sm">
+                Join {booking} people who have already their spot!
+              </p>
+            ) : (
+              <p className="text-sm">Be the first to book your spot!</p>
+            )}
+
+            <BookEvent/>
+          </div>
         </aside>
       </div>
     </section>
