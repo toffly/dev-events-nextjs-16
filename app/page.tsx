@@ -1,26 +1,13 @@
 import EventCard from "@/components/EventCard";
 import ExploreBtn from "@/components/ExploreBtn";
+import { IEvent } from "@/database";
 
-const events = [
-  {
-    image: "/images/event1.png",
-    title: "Event 1",
-    slug: "event-1",
-    location: "location-1",
-    date: "Date-1",
-    time: "Time-1",
-  },
-   {
-    image: "/images/event2.png",
-    title: "Event 2",
-    slug: "event-2",
-    location: "location-2",
-    date: "Date-2",
-    time: "Time-2",
-  },
-];
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
-const page = () => {
+const page = async () => {
+  const response = await fetch(`${BASE_URL}/api/events`)
+  const {events} = await response.json()
+
   return (
     <section>
       <h1 className="text-center">
@@ -36,7 +23,7 @@ const page = () => {
         <h3>Feature vents</h3>
 
         <ul className="events">
-          {events.map((event) => (
+          {events && events.length > 0 && events.map((event: IEvent) => (
             <li key={event.title}>
               <EventCard {...event} />
             </li>
